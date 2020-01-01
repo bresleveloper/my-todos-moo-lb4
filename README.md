@@ -48,7 +48,13 @@ test with `npm start`, 1st time do it with `sudo npm start`
 #### test connection
 `MYSQL_HOST=127.0.0.1 MYSQL_PORT=3306 MYSQL_USER=shuki MYSQL_PASSWORD=2 MYSQL_DATABASE="my_todos_of_the_moo" CI=true npm test`
 
-`Connection fails: Error: ER_ACCESS_DENIED_ERROR: Access denied for user ''@'localhost' (using password: NO)` might indicate that the name of the model is not identical to the mysql table name and is solved by `@model({ settings: { strict: false, mysql: { table: 'todos-moo' } } })` decoration in the model, or `sudo`
+`Connection fails: Error: ER_ACCESS_DENIED_ERROR: Access denied for user ''@'localhost' (using password: NO)`
+
+solutions:
+
+* from you `database.config.js.json` remove the line with the `url`
+* `sudo npm start`
+* might indicate that the name of the model is not identical to the mysql table name and is solved by `@model({ settings: { strict: false, mysql: { table: 'todos-moo' } } })` decoration in the model
 
 
 # angular
@@ -82,7 +88,7 @@ this + [ng](https://github.com/bresleveloper/my-todos-moo-ng)
 * create test index.html
     * `touch /var/www/my.todos.moo.com/index.html`
     * `xdg-open /var/www/my.todos.moo.com/index.html`
-* update your hosts file `sudo xdg-open /etc/hosts`, add `127.0.1.1	my.todos.moo.com`
+* update your hosts file `sudo xdg-open /etc/hosts`, add `127.0.0.1	my.todos.moo.com`
 * create apache2 .conf file for your website
     * `sudo touch /etc/apache2/sites-available/my.todos.moo.conf`
     * `sudo xdg-open /etc/apache2/sites-available/my.todos.moo.conf`
@@ -102,6 +108,12 @@ content here
 * re-configure apache2 with new site
     * `sudo a2ensite my.todos.moo.conf`
     * `sudo systemctl restart apache2`
+
+
+#### browse to `my.todos.moo.com`
+
+
+## serve angular
 
 copy ng files to apache dir
 
