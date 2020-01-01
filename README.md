@@ -67,3 +67,19 @@ const config = {
 
 # into gits
 
+this + [ng](https://github.com/bresleveloper/my-todos-moo-ng)
+
+
+
+# create webserver for apps
+
+
+* install apache in linux - in terminal `sudo apt update` and then `sudo apt install apache2 -y`
+* make folder for your website - `sudo mkdir /var/www/my.todos.moo.com`
+* permissions
+    * `sudo chown -R $USER:$USER /var/www/my.todos.moo.com`
+    * `sudo chmod -R 755 /var/www/my.todos.moo.com`
+* create test index.html
+    * `touch /var/www/my.todos.moo.com/index.html`
+    * `xdg-open /var/www/my.todos.moo.com/index.html`
+* update your hosts file `sudo xdg-open /etc/hosts`
