@@ -82,4 +82,33 @@ this + [ng](https://github.com/bresleveloper/my-todos-moo-ng)
 * create test index.html
     * `touch /var/www/my.todos.moo.com/index.html`
     * `xdg-open /var/www/my.todos.moo.com/index.html`
-* update your hosts file `sudo xdg-open /etc/hosts`
+* update your hosts file `sudo xdg-open /etc/hosts`, add `127.0.1.1	my.todos.moo.com`
+* create apache2 .conf file for your website
+    * `sudo touch /etc/apache2/sites-available/my.todos.moo.conf`
+    * `sudo xdg-open /etc/apache2/sites-available/my.todos.moo.conf`
+
+content here
+```
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName my.todos.moo.com
+    ServerAlias my.todos.moo.com
+    DocumentRoot /var/www/my.todos.moo.com
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+
+* re-configure apache2 with new site
+    * `sudo a2ensite my.todos.moo.conf`
+    * `sudo systemctl restart apache2`
+
+copy ng files to apache dir
+
+`sudo cp -r ~/Desktop/ariel/loopback4/myMvcTodosMoo/ngMvcTodoMoo/dist/ngMvcTodoMoo/. /var/www/my.todos.moo.com/`
+
+to test ng index lets add an h1
+`sudo xdg-open /var/www/my.todos.moo.com/index.html`
+
+
+## serve node api
